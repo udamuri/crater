@@ -76,9 +76,9 @@ class EnvironmentManager
         }
 
         try {
-            $conn = $this->checkDatabaseConnection($request);
+            $this->checkDatabaseConnection($request);
 
-            $requirement = $this->checkVersionRequirements($request, $conn);
+            $requirement = $this->checkVersionRequirements($request);
 
             if ($requirement) {
                 return [
@@ -176,7 +176,7 @@ class EnvironmentManager
      * @param DatabaseEnvironmentRequest $request
      * @return bool
      */
-    private function checkVersionRequirements(DatabaseEnvironmentRequest $request, $conn)
+    private function checkVersionRequirements(DatabaseEnvironmentRequest $request)
     {
         $connection = $request->database_connection;
 
@@ -194,7 +194,9 @@ class EnvironmentManager
 
         switch ($connection) {
             case 'mysql':
-                $dbSupportInfo = $checker->checkMysqlVersion($conn);
+                $dbSupportInfo = $checker->checkMysqlVersion(
+                    config('crater.min_mysql_version')
+                );
 
                 break;
 

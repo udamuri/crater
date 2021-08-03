@@ -118,41 +118,6 @@ export default {
           title: 'settings.menu_title.preferences',
           icon: 'cog-icon',
         },
-        {
-          link: '/admin/settings/customization',
-          title: 'settings.menu_title.customization',
-          icon: 'pencil-alt-icon',
-        },
-        {
-          link: '/admin/settings/notifications',
-          title: 'settings.menu_title.notifications',
-          icon: 'bell-icon',
-        },
-        {
-          link: '/admin/settings/tax-types',
-          title: 'settings.menu_title.tax_types',
-          icon: 'check-circle-icon',
-        },
-        {
-          link: '/admin/settings/payment-mode',
-          title: 'settings.menu_title.payment_modes',
-          icon: 'credit-card-icon',
-        },
-        {
-          link: '/admin/settings/custom-fields',
-          title: 'settings.menu_title.custom_fields',
-          icon: 'cube-icon',
-        },
-        {
-          link: '/admin/settings/notes',
-          title: 'settings.menu_title.notes',
-          icon: 'clipboard-check-icon',
-        },
-        {
-          link: '/admin/settings/expense-category',
-          title: 'settings.menu_title.expense_category',
-          icon: 'clipboard-list-icon',
-        },
 
         {
           link: '/admin/settings/mail-configuration',
@@ -168,11 +133,6 @@ export default {
           link: '/admin/settings/backup',
           title: 'settings.menu_title.backup',
           icon: 'database-icon',
-        },
-        {
-          link: '/admin/settings/update-app',
-          title: 'settings.menu_title.update_app',
-          icon: 'refresh-icon',
         },
       ],
     }

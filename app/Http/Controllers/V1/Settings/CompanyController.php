@@ -62,6 +62,8 @@ class CompanyController extends Controller
 
         $company->update($request->only('name'));
 
+        
+
         $company->address()->updateOrCreate(['company_id' => $company->id], $request->except(['name']));
 
         return response()->json([

@@ -24,8 +24,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_host"
           :invalid="$v.mailConfigData.mail_host.$error"
+          v-model.trim="mailConfigData.mail_host"
           type="text"
           name="mail_host"
           class="mt-2"
@@ -48,8 +48,6 @@
           :type="getInputType"
           name="password"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
         >
           <template v-slot:rightIcon>
             <eye-off-icon
@@ -72,8 +70,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_port"
           :invalid="$v.mailConfigData.mail_port.$error"
+          v-model.trim="mailConfigData.mail_port"
           type="text"
           name="mail_port"
           class="mt-2"
@@ -103,13 +101,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_mail"
           :invalid="$v.mailConfigData.from_mail.$error"
+          v-model.trim="mailConfigData.from_mail"
           type="text"
           name="from_mail"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_mail.$touch()"
         />
       </sw-input-group>
@@ -120,8 +116,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_name"
           :invalid="$v.mailConfigData.from_name.$error"
+          v-model.trim="mailConfigData.from_name"
           type="text"
           name="from_name"
           class="mt-2"

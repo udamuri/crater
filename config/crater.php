@@ -3,30 +3,24 @@
 return [
 
     /*
-    * Minimum php version.
+    * Minimum php version of the application.
     */
     'min_php_version' => '7.4.0',
 
     /*
-    * Minimum mysql version.
+    * Minimum mysql version of the application.
     */
 
     'min_mysql_version' => '5.7.7',
 
     /*
-    * Minimum mariadb version.
-    */
-
-    'min_mariadb_version' => '10.2.7',
-
-    /*
-    * Minimum pgsql version.
+    * Minimum pgsql version of the application.
     */
 
     'min_pgsql_version' => '9.2.0',
 
     /*
-    * Minimum sqlite version.
+    * Minimum sqlite version of the application.
     */
 
     'min_sqlite_version' => '3.24.0',

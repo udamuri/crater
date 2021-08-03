@@ -24,8 +24,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_mailgun_domain"
           :invalid="$v.mailConfigData.mail_mailgun_domain.$error"
+          v-model.trim="mailConfigData.mail_mailgun_domain"
           type="text"
           name="mailgun_domain"
           class="mt-2"
@@ -39,13 +39,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_mailgun_secret"
           :invalid="$v.mailConfigData.mail_mailgun_secret.$error"
+          v-model.trim="mailConfigData.mail_mailgun_secret"
           :type="getInputType"
           name="mailgun_secret"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.mail_mailgun_secret.$touch()"
         >
           <template v-slot:rightIcon>
@@ -69,8 +67,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_mailgun_endpoint"
           :invalid="$v.mailConfigData.mail_mailgun_endpoint.$error"
+          v-model.trim="mailConfigData.mail_mailgun_endpoint"
           type="text"
           name="mailgun_endpoint"
           class="mt-2"
@@ -84,13 +82,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_mail"
           :invalid="$v.mailConfigData.from_mail.$error"
+          v-model.trim="mailConfigData.from_mail"
           type="text"
           name="from_mail"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_mail.$touch()"
         />
       </sw-input-group>
@@ -101,13 +97,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_name"
           :invalid="$v.mailConfigData.from_name.$error"
+          v-model.trim="mailConfigData.from_name"
           type="text"
           name="from_name"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_name.$touch()"
         />
       </sw-input-group>
@@ -128,14 +122,10 @@
 </template>
 
 <script>
-const { required, email } = require('vuelidate/lib/validators')
+const { required, email, numeric } = require('vuelidate/lib/validators')
 import { EyeIcon, EyeOffIcon } from '@vue-hero-icons/outline'
 
 export default {
-  components: {
-    EyeIcon,
-    EyeOffIcon,
-  },
   props: {
     configData: {
       type: Object,
@@ -152,6 +142,10 @@ export default {
       require: true,
       default: Array,
     },
+  },
+  components: {
+    EyeIcon,
+    EyeOffIcon,
   },
   data() {
     return {

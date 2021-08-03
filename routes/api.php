@@ -5,36 +5,16 @@ use Crater\Http\Controllers\V1\Auth\ForgotPasswordController;
 use Crater\Http\Controllers\V1\Auth\ResetPasswordController;
 use Crater\Http\Controllers\V1\Backup\BackupsController;
 use Crater\Http\Controllers\V1\Backup\DownloadBackupController;
-use Crater\Http\Controllers\V1\Customer\CustomersController;
-use Crater\Http\Controllers\V1\Customer\CustomerStatsController;
-use Crater\Http\Controllers\V1\CustomField\CustomFieldsController;
 use Crater\Http\Controllers\V1\Dashboard\DashboardController;
-use Crater\Http\Controllers\V1\Estimate\ChangeEstimateStatusController;
-use Crater\Http\Controllers\V1\Estimate\ConvertEstimateController;
-use Crater\Http\Controllers\V1\Estimate\EstimatesController;
-use Crater\Http\Controllers\V1\Estimate\EstimateTemplatesController;
-use Crater\Http\Controllers\V1\Estimate\SendEstimateController;
-use Crater\Http\Controllers\V1\Expense\ExpenseCategoriesController;
-use Crater\Http\Controllers\V1\Expense\ExpensesController;
-use Crater\Http\Controllers\V1\Expense\ShowReceiptController;
-use Crater\Http\Controllers\V1\Expense\UploadReceiptController;
 use Crater\Http\Controllers\V1\General\BootstrapController;
 use Crater\Http\Controllers\V1\General\CountriesController;
 use Crater\Http\Controllers\V1\General\CurrenciesController;
 use Crater\Http\Controllers\V1\General\DateFormatsController;
 use Crater\Http\Controllers\V1\General\FiscalYearsController;
 use Crater\Http\Controllers\V1\General\LanguagesController;
-use Crater\Http\Controllers\V1\General\NextNumberController;
 use Crater\Http\Controllers\V1\General\NotesController;
 use Crater\Http\Controllers\V1\General\SearchController;
 use Crater\Http\Controllers\V1\General\TimezonesController;
-use Crater\Http\Controllers\V1\Invoice\ChangeInvoiceStatusController;
-use Crater\Http\Controllers\V1\Invoice\CloneInvoiceController;
-use Crater\Http\Controllers\V1\Invoice\InvoicesController;
-use Crater\Http\Controllers\V1\Invoice\InvoiceTemplatesController;
-use Crater\Http\Controllers\V1\Invoice\SendInvoiceController;
-use Crater\Http\Controllers\V1\Item\ItemsController;
-use Crater\Http\Controllers\V1\Item\UnitsController;
 use Crater\Http\Controllers\V1\Mobile\AuthController;
 use Crater\Http\Controllers\V1\Onboarding\AppDomainController;
 use Crater\Http\Controllers\V1\Onboarding\DatabaseConfigurationController;
@@ -43,9 +23,6 @@ use Crater\Http\Controllers\V1\Onboarding\LoginController;
 use Crater\Http\Controllers\V1\Onboarding\OnboardingWizardController;
 use Crater\Http\Controllers\V1\Onboarding\PermissionsController;
 use Crater\Http\Controllers\V1\Onboarding\RequirementsController;
-use Crater\Http\Controllers\V1\Payment\PaymentMethodsController;
-use Crater\Http\Controllers\V1\Payment\PaymentsController;
-use Crater\Http\Controllers\V1\Payment\SendPaymentController;
 use Crater\Http\Controllers\V1\Settings\CompanyController;
 use Crater\Http\Controllers\V1\Settings\DiskController;
 use Crater\Http\Controllers\V1\Settings\GetCompanySettingsController;
@@ -183,8 +160,6 @@ Route::prefix('/v1')->group(function () {
 
         Route::get('/languages', LanguagesController::class);
 
-        Route::get('/next-number', NextNumberController::class);
-
 
         // Self Update
         //----------------------------------
@@ -202,90 +177,6 @@ Route::prefix('/v1')->group(function () {
         Route::post('/update/migrate', MigrateUpdateController::class);
 
         Route::post('/update/finish', FinishUpdateController::class);
-
-
-        // Customers
-        //----------------------------------
-
-        Route::post('/customers/delete', [CustomersController::class, 'delete']);
-
-        Route::get('customers/{customer}/stats', CustomerStatsController::class);
-
-        Route::resource('customers', CustomersController::class);
-
-
-        // Items
-        //----------------------------------
-
-        Route::post('/items/delete', [ItemsController::class, 'delete']);
-
-        Route::resource('items', ItemsController::class);
-
-        Route::resource('units', UnitsController::class);
-
-
-        // Invoices
-        //-------------------------------------------------
-
-        Route::post('/invoices/{invoice}/send', SendInvoiceController::class);
-
-        Route::post('/invoices/{invoice}/clone', CloneInvoiceController::class);
-
-        Route::post('/invoices/{invoice}/status', ChangeInvoiceStatusController::class);
-
-        Route::post('/invoices/delete', [InvoicesController::class, 'delete']);
-
-        Route::get('/invoices/templates', InvoiceTemplatesController::class);
-
-        Route::apiResource('invoices', InvoicesController::class);
-
-
-        // Estimates
-        //-------------------------------------------------
-
-        Route::post('/estimates/{estimate}/send', SendEstimateController::class);
-
-        Route::post('/estimates/{estimate}/status', ChangeEstimateStatusController::class);
-
-        Route::post('/estimates/{estimate}/convert-to-invoice', ConvertEstimateController::class);
-
-        Route::get('/estimates/templates', EstimateTemplatesController::class);
-
-        Route::post('/estimates/delete', [EstimatesController::class, 'delete']);
-
-        Route::apiResource('estimates', EstimatesController::class);
-
-
-        // Expenses
-        //----------------------------------
-
-        Route::get('/expenses/{expense}/show/receipt', ShowReceiptController::class);
-
-        Route::post('/expenses/{expense}/upload/receipts', UploadReceiptController::class);
-
-        Route::post('/expenses/delete', [ExpensesController::class, 'delete']);
-
-        Route::apiResource('expenses', ExpensesController::class);
-
-        Route::apiResource('categories', ExpenseCategoriesController::class);
-
-
-        // Payments
-        //----------------------------------
-
-        Route::post('/payments/{payment}/send', SendPaymentController::class);
-
-        Route::post('/payments/delete', [PaymentsController::class, 'delete']);
-
-        Route::apiResource('payments', PaymentsController::class);
-
-        Route::apiResource('payment-methods', PaymentMethodsController::class);
-
-
-        // Custom fields
-        //----------------------------------
-
-        Route::resource('custom-fields', CustomFieldsController::class);
 
 
         // Backup & Disk

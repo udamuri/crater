@@ -28,8 +28,6 @@
           v-model.trim="mailConfigData.from_mail"
           type="text"
           name="from_mail"
-          autocomplete="off"
-          data-lpignore="true"
           class="mt-2"
           @input="$v.mailConfigData.from_mail.$touch()"
         />
@@ -46,8 +44,6 @@
           type="text"
           name="name"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_name.$touch()"
         />
       </sw-input-group>

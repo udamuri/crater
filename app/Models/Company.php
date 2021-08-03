@@ -22,7 +22,7 @@ class Company extends Model implements HasMedia
         $logo = $this->getMedia('logo')->first();
 
         $isSystem = FileDisk::whereSetAsDefault(true)->first()->isSystem();
-
+        
         if ($logo) {
             if ($isSystem) {
                 return $logo->getPath();

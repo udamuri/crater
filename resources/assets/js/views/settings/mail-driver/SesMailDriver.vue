@@ -24,8 +24,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_host"
           :invalid="$v.mailConfigData.mail_host.$error"
+          v-model.trim="mailConfigData.mail_host"
           type="text"
           name="mail_host"
           class="mt-2"
@@ -39,8 +39,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_port"
           :invalid="$v.mailConfigData.mail_port.$error"
+          v-model.trim="mailConfigData.mail_port"
           type="text"
           name="mail_port"
           class="mt-2"
@@ -70,13 +70,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_mail"
           :invalid="$v.mailConfigData.from_mail.$error"
+          v-model.trim="mailConfigData.from_mail"
           type="text"
           name="from_mail"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_mail.$touch()"
         />
       </sw-input-group>
@@ -87,13 +85,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.from_name"
           :invalid="$v.mailConfigData.from_name.$error"
+          v-model.trim="mailConfigData.from_name"
           type="text"
           name="name"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.from_name.$touch()"
         />
       </sw-input-group>
@@ -104,8 +100,8 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_ses_key"
           :invalid="$v.mailConfigData.mail_ses_key.$error"
+          v-model.trim="mailConfigData.mail_ses_key"
           type="text"
           name="mail_ses_key"
           class="mt-2"
@@ -119,13 +115,11 @@
         required
       >
         <sw-input
-          v-model.trim="mailConfigData.mail_ses_secret"
           :invalid="$v.mailConfigData.mail_ses_secret.$error"
+          v-model.trim="mailConfigData.mail_ses_secret"
           :type="getInputType"
           name="mail_ses_secret"
           class="mt-2"
-          autocomplete="off"
-          data-lpignore="true"
           @input="$v.mailConfigData.mail_ses_secret.$touch()"
         >
           <template v-slot:rightIcon>
@@ -163,10 +157,6 @@ const { required, email, numeric } = require('vuelidate/lib/validators')
 import { EyeIcon, EyeOffIcon } from '@vue-hero-icons/outline'
 
 export default {
-  components: {
-    EyeOffIcon,
-    EyeIcon,
-  },
   props: {
     configData: {
       type: Object,
@@ -183,6 +173,10 @@ export default {
       require: true,
       default: Array,
     },
+  },
+  components: {
+    EyeOffIcon,
+    EyeIcon,
   },
   data() {
     return {

@@ -34,34 +34,6 @@
         </div>
       </a>
 
-      <li class="relative hidden float-left m-0 md:block">
-        <sw-dropdown>
-          <a
-            slot="activator"
-            href="#"
-            style="padding: 6px"
-            class="inline-block text-sm text-black bg-white rounded-sm"
-          >
-            <plus-icon class="w-6 h-6" />
-          </a>
-
-          <sw-dropdown-item tag-name="router-link" to="/admin/invoices/create">
-            <document-text-icon class="h-5 mr-2 text-gray-600" />
-            {{ $t('invoices.new_invoice') }}
-          </sw-dropdown-item>
-
-          <sw-dropdown-item tag-name="router-link" to="/admin/estimates/create">
-            <document-icon class="h-5 mr-2 text-gray-600" />
-            {{ $t('estimates.new_estimate') }}
-          </sw-dropdown-item>
-
-          <sw-dropdown-item tag-name="router-link" to="/admin/customers/create">
-            <user-icon class="h-5 mr-2 text-gray-600" />
-            {{ $t('customers.new_customer') }}
-          </sw-dropdown-item>
-        </sw-dropdown>
-      </li>
-
       <li class="relative block float-left ml-2">
         <sw-dropdown>
           <a

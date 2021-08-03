@@ -107,45 +107,9 @@ export default {
             icon: 'home-icon',
             route: '/admin/dashboard',
           },
-          {
-            title: 'navigation.customers',
-            icon: 'user-icon',
-            route: '/admin/customers',
-          },
-          {
-            title: 'navigation.items',
-            icon: 'star-icon',
-            route: '/admin/items',
-          },
         ],
+        [],
         [
-          {
-            title: 'navigation.estimates',
-            icon: 'document-icon',
-            route: '/admin/estimates',
-          },
-          {
-            title: 'navigation.invoices',
-            icon: 'document-text-icon',
-            route: '/admin/invoices',
-          },
-          {
-            title: 'navigation.payments',
-            icon: 'credit-card-icon',
-            route: '/admin/payments',
-          },
-          {
-            title: 'navigation.expenses',
-            icon: 'calculator-icon',
-            route: '/admin/expenses',
-          },
-        ],
-        [
-          {
-            title: 'navigation.reports',
-            icon: 'chart-bar-icon',
-            route: '/admin/reports',
-          },
           {
             title: 'navigation.settings',
             icon: 'cog-icon',

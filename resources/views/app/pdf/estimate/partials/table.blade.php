@@ -72,16 +72,16 @@
         </tr>
 
         @if ($estimate->tax_per_item === 'YES')
-            @foreach ($taxes as $tax)
+            @for ($i = 0; $i < count($labels); $i++)
                 <tr>
                     <td class="border-0 total-table-attribute-label">
-                        {{$tax->name.' ('.$tax->percent.'%)'}}
+                        {{$labels[$i]}}
                     </td>
-                    <td class="py-2 border-0 item-cell total-table-attribute-value">
-                        {!! format_money_pdf($tax->amount, $estimate->user->currency) !!}
+                    <td class="border-0 item-cell total-table-attribute-value">
+                        {!! format_money_pdf($taxes[$i], $estimate->user->currency) !!}
                     </td>
                 </tr>
-            @endforeach
+            @endfor
         @else
             @foreach ($estimate->taxes as $tax)
                 <tr>

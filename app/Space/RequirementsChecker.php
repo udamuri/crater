@@ -2,8 +2,6 @@
 
 namespace Crater\Space;
 
-use Illuminate\Support\Str;
-use PDO;
 use SQLite3;
 
 class RequirementsChecker
@@ -123,16 +121,10 @@ class RequirementsChecker
      *
      * @return array
      */
-    public function checkMysqlVersion($conn)
+    public function checkMysqlVersion(string $minMysqlVersion = null)
     {
-        $version_info = $conn->getAttribute(PDO::ATTR_SERVER_VERSION);
-
-        $isMariaDb = Str::contains($version_info, 'MariaDB');
-
-        $minVersionMysql = $isMariaDb ? config('crater.min_mariadb_version') : config('crater.min_mysql_version');
-
-        $currentMysqlVersion = $this->getMysqlVersionInfo($conn);
-
+        $minVersionMysql = $minMysqlVersion;
+        $currentMysqlVersion = $this->getMysqlVersionInfo();
         $supported = false;
 
         if (version_compare($currentMysqlVersion, $minVersionMysql) >= 0) {
@@ -153,13 +145,11 @@ class RequirementsChecker
      *
      * @return string
      */
-    private static function getMysqlVersionInfo($pdo)
+    private static function getMysqlVersionInfo()
     {
-        $version = $pdo->query('select version()')->fetchColumn();
+        $currentVersion = explode(' ', mysqli_get_client_info());
 
-        preg_match("/^[0-9\.]+/", $version, $match);
-
-        return $match[0];
+        return $currentVersion[1];
     }
 
     /**

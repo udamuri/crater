@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('company_name')->nullable();
             $table->string('website')->nullable();
             $table->boolean('enable_portal')->nullable();
+            $table->unsignedInteger('creator_id')->nullable();
+            $table->foreign('creator_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('currency_id')->unsigned()->nullable();
             $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->integer('company_id')->unsigned()->nullable();

@@ -7,7 +7,6 @@ import ar from './ar.json'
 import de from './de.json'
 import ja from './ja.json'
 import pt_BR from './pt-br.json'
-import pt from './pt.json'
 import it from './it.json'
 import sr from './sr.json'
 import nl from './nl.json'
@@ -30,7 +29,6 @@ const i18n = new VueI18n({
     de,
     ja,
     pt_BR,
-    pt,
     it,
     sr,
     nl,

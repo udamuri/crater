@@ -1,10 +1,35 @@
 <template>
   <header
-    class="fixed top-0 left-0 z-40 flex items-center justify-between w-full px-4 py-3 md:h-16 md:px-8 bg-gradient-to-r from-primary-500 to-primary-400"
+    class="
+      fixed
+      top-0
+      left-0
+      z-40
+      flex
+      items-center
+      justify-between
+      w-full
+      px-4
+      py-3
+      md:h-16 md:px-8
+      bg-gradient-to-r
+      from-primary-500
+      to-primary-400
+    "
   >
     <a
       href="/admin/dashboard"
-      class="float-none text-lg not-italic font-black tracking-wider text-white brand-main md:float-left font-base"
+      class="
+        float-none
+        text-lg
+        not-italic
+        font-black
+        tracking-wider
+        text-white
+        brand-main
+        md:float-left
+        font-base
+      "
     >
       <img
         id="logo-white"
@@ -26,7 +51,21 @@
       <a
         :class="{ 'is-active': isSidebarOpen }"
         href="#"
-        class="flex float-left p-1 ml-3 overflow-visible text-sm text-black ease-linear bg-white border-0 rounded cursor-pointer md:hidden md:ml-0 hamburger hamburger--arrowturn"
+        class="
+          flex
+          float-left
+          p-1
+          ml-3
+          overflow-visible
+          text-sm text-black
+          ease-linear
+          bg-white
+          border-0
+          rounded
+          cursor-pointer
+          md:hidden md:ml-0
+          hamburger hamburger--arrowturn
+        "
         @click="toggleSidebar"
       >
         <div class="relative inline-block w-6 h-6">

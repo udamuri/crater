@@ -28,6 +28,10 @@ import Dashboard from './views/dashboard/Dashboard.vue'
 import UserIndex from './views/users/Index.vue'
 import UserCreate from './views/users/Create.vue'
 
+// Customers
+import CustomerIndex from './views/customers/Index.vue'
+import CustomerCreate from './views/customers/Create.vue'
+
 // Settings
 import SettingsLayout from './views/settings/SettingsIndex.vue'
 import CompanyInfo from './views/settings/CompanyInfoSetting.vue'
@@ -115,6 +119,22 @@ const routes = [
       {
         path: 'dashboard',
         component: Dashboard,
+      },
+
+      // Customers
+      {
+        path: 'customers',
+        component: CustomerIndex,
+      },
+      {
+        path: 'customers/create',
+        name: 'customers.create',
+        component: CustomerCreate,
+      },
+      {
+        path: 'customers/:id/edit',
+        name: 'customers.edit',
+        component: CustomerCreate,
       },
 
       // User

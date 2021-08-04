@@ -107,6 +107,11 @@ export default {
             icon: 'home-icon',
             route: '/admin/dashboard',
           },
+          {
+            title: 'navigation.customers',
+            icon: 'user-icon',
+            route: '/admin/customers',
+          },
         ],
         [],
         [

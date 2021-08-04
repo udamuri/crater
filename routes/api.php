@@ -39,6 +39,7 @@ use Crater\Http\Controllers\V1\Update\FinishUpdateController;
 use Crater\Http\Controllers\V1\Update\MigrateUpdateController;
 use Crater\Http\Controllers\V1\Update\UnzipUpdateController;
 use Crater\Http\Controllers\V1\Users\UsersController;
+use Crater\Http\Controllers\V1\Customer\CustomersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -177,6 +178,14 @@ Route::prefix('/v1')->group(function () {
         Route::post('/update/migrate', MigrateUpdateController::class);
 
         Route::post('/update/finish', FinishUpdateController::class);
+
+
+        // Customers
+        //----------------------------------
+
+        Route::post('/customers/delete', [CustomersController::class, 'delete']);
+
+        Route::resource('customers', CustomersController::class);
 
 
         // Backup & Disk

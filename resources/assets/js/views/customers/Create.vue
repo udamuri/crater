@@ -146,7 +146,7 @@
 
         <sw-divider class="mb-5 md:mb-8" />
 
-        <!-- Billing Address  -->
+        <!-- Company Information  -->
         <div class="grid grid-cols-5 gap-4 mb-8">
           <h6 class="col-span-5 sw-section-title lg:col-span-1">
             {{ $t('customers.billing_address') }}
@@ -155,7 +155,7 @@
           <div
             class="grid col-span-5 lg:col-span-4 gap-y-6 gap-x-4 md:grid-cols-6"
           >
-            <sw-input-group :label="$t('customers.name')" class="md:col-span-3">
+            <sw-input-group :label="$t('customers.company_name')" class="md:col-span-3">
               <sw-input
                 v-model.trim="billing.name"
                 type="text"
@@ -254,145 +254,6 @@
         </div>
 
         <sw-divider class="mb-5 md:mb-8" />
-
-        <!-- Billing Address Copy Button  -->
-        <div
-          class="flex items-center justify-start mb-6 md:justify-end md:mb-0"
-        >
-          <div class="p-1">
-            <sw-button
-              ref="sameAddress"
-              variant="primary"
-              type="button"
-              class="h-8 px-3 py-1 mb-4"
-              @click="copyAddress(true)"
-            >
-              <document-duplicate-icon class="h-4 mr-1 -ml-2" />
-              <span class="text-xs">
-                {{ $t('customers.copy_billing_address') }}
-              </span>
-            </sw-button>
-          </div>
-        </div>
-
-        <!-- Shipping Address  -->
-        <div class="grid grid-cols-5 gap-4 mb-8">
-          <h6 class="col-span-5 sw-section-title lg:col-span-1">
-            {{ $t('customers.shipping_address') }}
-          </h6>
-
-          <div
-            class="grid col-span-5 lg:col-span-4 gap-y-6 gap-x-4 md:grid-cols-6"
-          >
-            <sw-input-group :label="$t('customers.name')" class="md:col-span-3">
-              <sw-input
-                v-model.trim="shipping.name"
-                type="text"
-                name="address_name"
-                tabindex="15"
-              />
-            </sw-input-group>
-
-            <sw-input-group
-              :label="$t('customers.country')"
-              class="md:col-span-3"
-            >
-              <sw-select
-                v-model="shipping_country"
-                :options="countries"
-                :searchable="true"
-                :show-labels="false"
-                :tabindex="16"
-                :allow-empty="true"
-                :placeholder="$t('general.select_country')"
-                label="name"
-                track-by="id"
-              />
-            </sw-input-group>
-
-            <sw-input-group
-              :label="$t('customers.state')"
-              class="md:col-span-3"
-            >
-              <sw-input
-                v-model="shipping.state"
-                name="shipping.state"
-                type="text"
-                tabindex="17"
-              />
-            </sw-input-group>
-
-            <sw-input-group :label="$t('customers.city')" class="md:col-span-3">
-              <sw-input
-                v-model="shipping.city"
-                name="shipping.city"
-                type="text"
-                tabindex="18"
-              />
-            </sw-input-group>
-
-            <sw-input-group
-              :label="$t('customers.address')"
-              class="md:col-span-3"
-            >
-              <sw-textarea
-                v-model.trim="shipping.address_street_1"
-                :tabindex="19"
-                :placeholder="$t('general.street_1')"
-                type="text"
-                name="street_1"
-                rows="3"
-                @input="$v.shipping.address_street_1.$touch()"
-              />
-
-              <div v-if="$v.shipping.address_street_1.$error">
-                <span
-                  v-if="!$v.shipping.address_street_1.maxLength"
-                  class="text-sm text-danger"
-                  >{{ $t('validation.address_maxlength') }}</span
-                >
-              </div>
-
-              <sw-textarea
-                v-model.trim="shipping.address_street_2"
-                :tabindex="20"
-                :placeholder="$t('general.street_2')"
-                type="text"
-                name="street_2"
-                rows="3"
-                @input="$v.shipping.address_street_2.$touch()"
-              />
-
-              <div v-if="$v.shipping.address_street_2.$error">
-                <span
-                  v-if="!$v.shipping.address_street_2.maxLength"
-                  class="text-danger"
-                  >{{ $t('validation.address_maxlength') }}</span
-                >
-              </div>
-            </sw-input-group>
-
-            <div class="md:col-span-3">
-              <sw-input-group :label="$t('customers.phone')" class="mb-6">
-                <sw-input
-                  v-model.trim="shipping.phone"
-                  type="text"
-                  name="phone"
-                  tabindex="21"
-                />
-              </sw-input-group>
-
-              <sw-input-group :label="$t('customers.zip_code')">
-                <sw-input
-                  v-model.trim="shipping.zip"
-                  type="text"
-                  name="zip"
-                  tabindex="22"
-                />
-              </sw-input-group>
-            </div>
-          </div>
-        </div>
 
         <sw-divider v-if="customFields.length > 0" class="mb-5 md:mb-8" />
 
@@ -783,9 +644,7 @@ export default {
         if (this.isEdit) {
           response = await this.updateCustomer(this.formData)
           if (response.data.success) {
-            this.$router.push(
-              `/admin/customers/${response.data.customer.id}/view`
-            )
+            this.$router.push(`/admin/customers`)
             this.showNotification({
               type: 'success',
               message: this.$t('customers.updated_message'),
@@ -800,9 +659,7 @@ export default {
         } else {
           response = await this.addCustomer(this.formData)
           if (response.data.success) {
-            this.$router.push(
-              `/admin/customers/${response.data.customer.id}/view`
-            )
+            this.$router.push(`/admin/customers`)
             this.showNotification({
               type: 'success',
               message: this.$t('customers.created_message'),

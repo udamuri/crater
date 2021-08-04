@@ -104,11 +104,6 @@ class User extends Authenticatable implements HasMedia
         return Carbon::parse($this->created_at)->format($dateFormat);
     }
 
-    public function estimates()
-    {
-        return $this->hasMany(Estimate::class);
-    }
-
     public function currency()
     {
         return $this->belongsTo(Currency::class);
@@ -129,11 +124,6 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Address::class);
     }
 
-    public function expenses()
-    {
-        return $this->hasMany(Expense::class);
-    }
-
     public function billingAddress()
     {
         return $this->hasOne(Address::class)->where('type', Address::BILLING_TYPE);
@@ -142,16 +132,6 @@ class User extends Authenticatable implements HasMedia
     public function shippingAddress()
     {
         return $this->hasOne(Address::class)->where('type', Address::SHIPPING_TYPE);
-    }
-
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class);
     }
 
     public function settings()
@@ -293,18 +273,6 @@ class User extends Authenticatable implements HasMedia
         foreach ($ids as $id) {
             $customer = self::find($id);
 
-            if ($customer->estimates()->exists()) {
-                $customer->estimates()->delete();
-            }
-
-            if ($customer->invoices()->exists()) {
-                $customer->invoices()->delete();
-            }
-
-            if ($customer->payments()->exists()) {
-                $customer->payments()->delete();
-            }
-
             if ($customer->addresses()->exists()) {
                 $customer->addresses()->delete();
             }
@@ -351,12 +319,6 @@ class User extends Authenticatable implements HasMedia
             foreach ($request->addresses as $address) {
                 $customer->addresses()->create($address);
             }
-        }
-
-        $customFields = $request->customFields;
-
-        if ($customFields) {
-            $customer->addCustomFields($customFields);
         }
 
         $customer = User::with('billingAddress', 'shippingAddress', 'fields')->find($customer->id);

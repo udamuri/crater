@@ -104,7 +104,15 @@
 
     <div v-show="!showEmptyScreen" class="relative table-container">
       <div
-        class="relative flex items-center justify-between h-10 mt-5 border-b-2 border-gray-200 border-solid"
+        class="
+          relative
+          flex
+          items-center
+          justify-between
+          h-10
+          mt-5
+          border-b-2 border-gray-200 border-solid
+        "
       >
         <p class="text-sm">
           {{ $t('general.showing') }}: <b>{{ customers.length }}</b>
@@ -115,7 +123,15 @@
           <sw-dropdown v-if="selectedCustomers.length">
             <span
               slot="activator"
-              class="flex block text-sm font-medium cursor-pointer select-none text-primary-400"
+              class="
+                flex
+                block
+                text-sm
+                font-medium
+                cursor-pointer
+                select-none
+                text-primary-400
+              "
             >
               {{ $t('general.actions') }}
               <chevron-down-icon class="h-5" />
@@ -179,7 +195,7 @@
           <template slot-scope="row">
             <span>{{ $t('customers.display_name') }}</span>
             <router-link
-              :to="{ path: `customers/${row.id}/view` }"
+              :to="{ path: `customers/${row.id}/edit` }"
               class="font-medium text-primary-500"
             >
               {{ row.name }}
@@ -219,17 +235,6 @@
 
         <sw-table-column
           :sortable="true"
-          :label="$t('customers.amount_due')"
-          show="due_amount"
-        >
-          <template slot-scope="row">
-            <span> {{ $t('customers.amount_due') }} </span>
-            <div v-html="$utils.formatMoney(row.due_amount, row.currency)" />
-          </template>
-        </sw-table-column>
-
-        <sw-table-column
-          :sortable="true"
           :label="$t('customers.added_on')"
           sort-as="created_at"
           show="formattedCreatedAt"
@@ -252,14 +257,6 @@
               >
                 <pencil-icon class="h-5 mr-3 text-gray-600" />
                 {{ $t('general.edit') }}
-              </sw-dropdown-item>
-
-              <sw-dropdown-item
-                :to="`customers/${row.id}/view`"
-                tag-name="router-link"
-              >
-                <eye-icon class="h-5 mr-3 text-gray-600" />
-                {{ $t('general.view') }}
               </sw-dropdown-item>
 
               <sw-dropdown-item @click="removeCustomer(row.id)">

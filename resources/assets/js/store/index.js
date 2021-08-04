@@ -7,6 +7,7 @@ import actions from './actions'
 
 import auth from './modules/auth'
 import user from './modules/user'
+import customer from './modules/customer'
 import company from './modules/company'
 import dashboard from './modules/dashboard'
 import modal from './modules/modal'
@@ -50,6 +51,7 @@ export default new Vuex.Store({
     dashboard,
     modal,
     users,
+    customer,
     backup,
     disks,
     search,
